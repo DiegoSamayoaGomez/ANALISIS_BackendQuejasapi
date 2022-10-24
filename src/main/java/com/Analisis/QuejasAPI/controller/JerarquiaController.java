@@ -1,10 +1,9 @@
 package com.Analisis.QuejasAPI.controller;
 
-import com.Analisis.QuejasAPI.model.Jerarquia;
-import com.Analisis.QuejasAPI.repository.JerarquiaRepository;
 
 import com.Analisis.QuejasAPI.exception.JerarquiaNotFoundException;
-
+import com.Analisis.QuejasAPI.model.Jerarquia;
+import com.Analisis.QuejasAPI.repository.JerarquiaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
@@ -12,22 +11,23 @@ import org.springframework.http.ResponseEntity;
 import javax.validation.Valid;
 import java.util.List;
 
-
 @RestController
 public class JerarquiaController {
 
     @Autowired
     JerarquiaRepository jerarquiaRepository;
 
-    //Conseguir todas las jerarquias
+
+    // Get All Notes
     @GetMapping("/jerarquia")
-    public List<Jerarquia> getALLJerarquia() {
+    public List<Jerarquia> getAllJerarquia() {
         return jerarquiaRepository.findAll();
     }
 
+
     //Crear nueva jerarquia
-    @GetMapping("/jerarquia")
-    public Jerarquia crearJerarquia(@Valid @RequestBody Jerarquia jerarquia) {
+    @PostMapping("/jerarquia")
+    public Jerarquia createJerarquia(@Valid @RequestBody Jerarquia jerarquia) {
         return jerarquiaRepository.save(jerarquia);
     }
 
