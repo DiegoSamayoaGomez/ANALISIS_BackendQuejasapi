@@ -17,6 +17,7 @@ public class Jerarquia {
     }
 
     public Jerarquia(Long id_jerarquia, String nombre) {
+        super();
         this.id_jerarquia = id_jerarquia;
         this.nombre = nombre;
     }
