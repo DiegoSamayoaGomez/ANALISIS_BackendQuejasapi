@@ -41,9 +41,9 @@ public class JerarquiaController {
     //Actualizar Jerarquia unica por ID
     @PutMapping("/jerarquia/{id_jerarquia}")
     public Jerarquia updateJerarquia(@PathVariable(value = "id_jerarquia") Long jerarquiaID,
-                                     @Valid @RequestBody Jerarquia jerarquiaDetalle) throws UsuarioNotFoundException {
+                                     @Valid @RequestBody Jerarquia jerarquiaDetalle) throws JerarquiaNotFoundException {
 
-        Jerarquia jerarquia = jerarquiaRepository.findById(jerarquiaID).orElseThrow(() -> new JerarquiaNotFoundException(jerarquiaId));
+        Jerarquia jerarquia = jerarquiaRepository.findById(jerarquiaID).orElseThrow(() -> new JerarquiaNotFoundException(jerarquiaID));
 
         jerarquia.setNombre(jerarquiaDetalle.getNombre());
 
@@ -54,16 +54,13 @@ public class JerarquiaController {
 
     //Eliminar Jerarquia por ID
     @DeleteMapping("jerarquia/{id_jerarquia}")
-    public ResponseEntity<?> deleteJerarquia(@PathVariable(value = "id_jerarquia") Long jerarquiaId) throws UsuarioNotFoundException{
+    public ResponseEntity<?> deleteJerarquia(@PathVariable(value = "id_jerarquia") Long jerarquiaId) throws JerarquiaNotFoundException {
 
-        Jerarquia jerarquia = jerarquiaRepository.findById(jerarquiaId).orElseThrow(() -> new UsuarioNotFoundException(jerarquiaId));
+        Jerarquia jerarquia = jerarquiaRepository.findById(jerarquiaId).orElseThrow(() -> new JerarquiaNotFoundException(jerarquiaId));
 
         jerarquiaRepository.delete(jerarquia);
         return ResponseEntity.ok().build();
     }
-
-
-
 
 
 }
