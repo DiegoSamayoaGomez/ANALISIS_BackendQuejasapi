@@ -19,19 +19,19 @@ public class UsuarioController {
     UsuarioRepository usuarioRepository;
 
     //Conseguir todos los usuarios
-    @GetMapping("usuario")
+    @GetMapping("/usuario")
     public List<Usuario> getAllUsuarios() {
         return usuarioRepository.findAll();
     }
 
     //Crear nuevo usuario
-    @PostMapping("usuario")
+    @PostMapping("/usuario")
     public Usuario createUsuario(@Valid @RequestBody Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
 
     //Buscar usuario por ID
-    @GetMapping("usuario/{id_usuario}")
+    @GetMapping("/usuario/{id_usuario}")
     public Usuario getUsuarioById(@PathVariable(value = "id_usuario") Long usuarioId) throws UsuarioNotFoundException {
         return usuarioRepository.findById(usuarioId).orElseThrow(() -> new UsuarioNotFoundException(usuarioId));
     }

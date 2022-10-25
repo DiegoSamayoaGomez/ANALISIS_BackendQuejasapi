@@ -53,7 +53,7 @@ public class JerarquiaController {
     }
 
     //Eliminar Jerarquia por ID
-    @DeleteMapping("jerarquia/{id_jerarquia}")
+    @DeleteMapping("/jerarquia/{id_jerarquia}")
     public ResponseEntity<?> deleteJerarquia(@PathVariable(value = "id_jerarquia") Long jerarquiaId) throws JerarquiaNotFoundException {
 
         Jerarquia jerarquia = jerarquiaRepository.findById(jerarquiaId).orElseThrow(() -> new JerarquiaNotFoundException(jerarquiaId));
