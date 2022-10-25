@@ -36,7 +36,7 @@ public class QuejaController {
     }
 
     //Actualizar estado de queja
-    @PutMapping("/quejas/{id_queja")
+    @PutMapping("/quejas/{id_queja}")
     public Queja updateQueja(@PathVariable(value = "id_queja") Long quejaId, @Valid @RequestBody Queja quejaDetalle) throws QuejaNotFoundException {
         Queja queja = quejaRepository.findById(quejaId).orElseThrow(() -> new QuejaNotFoundException(quejaId));
 
